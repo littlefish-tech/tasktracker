@@ -1,21 +1,19 @@
-import React, { userReducer } from 'react';
-import axios from "axios";
-import taskReducer from "./taskReducer";
-import TaskContext from "./taskContext";
-
+import React, { useReducer } from 'react';
+import axios from 'axios';
+import TaskContext from './taskContext';
+import taskReducer from './taskReducer';
 import {
     GET_TASKS,
-    CLEAR_TASKS,
     ADD_TASK,
     DELETE_TASK,
     SET_CURRENT,
     CLEAR_CURRENT,
     UPDATE_TASK,
     FILTER_TASKS,
+    CLEAR_TASKS,
     CLEAR_FILTER,
-    TASK_ERROR,
-
-} from "../types";
+    TASK_ERROR
+} from '../types';
 
 const TaskState = props => {
     const initialState = {
@@ -27,11 +25,11 @@ const TaskState = props => {
 
     const [state, dispatch] = useReducer(taskReducer, initialState);
 
-    //GET all tasks
 
     const getTasks = async () => {
         try {
-            const res = await axios.get("/api/tasks");
+            const res = await axios.get('/api/tasks');
+
             dispatch({
                 type: GET_TASKS,
                 payload: res.data
@@ -42,7 +40,8 @@ const TaskState = props => {
                 payload: err.response.msg
             });
         }
-    }
+    };
+
 
     const addTask = async task => {
         const config = {
@@ -66,10 +65,11 @@ const TaskState = props => {
         }
     };
 
-
+    // Delete Task
     const deleteTask = async id => {
         try {
             await axios.delete(`/api/tasks/${id}`);
+
             dispatch({
                 type: DELETE_TASK,
                 payload: id
@@ -82,18 +82,21 @@ const TaskState = props => {
         }
     };
 
-    //update task
-
+    // Update Task
     const updateTask = async task => {
         const config = {
-            header: {
-                "Content-Type": "application/json"
+            headers: {
+                'Content-Type': 'application/json'
             }
         };
+
         try {
-            const res = await axios.put(`/api/tasks/${task._id}`,
+            const res = await axios.put(
+                `/api/tasks/${task._id}`,
                 task,
-                config);
+                config
+            );
+
             dispatch({
                 type: UPDATE_TASK,
                 payload: res.data
@@ -106,23 +109,20 @@ const TaskState = props => {
         }
     };
 
-    //clear task
-
     const clearTasks = () => {
         dispatch({ type: CLEAR_TASKS });
     };
 
-    //set current task
+
     const setCurrent = task => {
-        dispatch({ type: SET_CURRENT, payload: task })
+        dispatch({ type: SET_CURRENT, payload: task });
     };
 
-    // Clear Current Task
+    // Clear Current task
     const clearCurrent = () => {
         dispatch({ type: CLEAR_CURRENT });
     };
 
-    // Filter tasks
     const filterTasks = text => {
         dispatch({ type: FILTER_TASKS, payload: text });
     };
@@ -131,22 +131,23 @@ const TaskState = props => {
     const clearFilter = () => {
         dispatch({ type: CLEAR_FILTER });
     };
+
     return (
         <TaskContext.Provider
             value={{
                 tasks: state.tasks,
                 current: state.current,
-                filter: state.filter,
+                filtered: state.filtered,
                 error: state.error,
-                getTasks,
                 addTask,
                 deleteTask,
-                updateTask,
-                clearTasks,
                 setCurrent,
                 clearCurrent,
+                updateTask,
                 filterTasks,
-                clearFilter
+                clearFilter,
+                getTasks,
+                clearTasks
             }}
         >
             {props.children}

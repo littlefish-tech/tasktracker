@@ -1,18 +1,69 @@
-import React, { Fragment, Component } from "react";
+import React, { Fragment, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import AuthContext from '../../context/auth/authContext';
+import TaskContext from '../../context/task/taskContext';
 
+const Navbar = ({ title, icon }) => {
+    const authContext = useContext(AuthContext);
+    const taskContext = useContext(TaskContext);
 
-class Navbar extends Component {
-    render() {
-        return (
-            <div className="navbar bg-primary">
-                <h4>Your Daily Task Tracker</h4>
-                <ul>
-                    <li>Login</li>
-                    <li>Register</li>
-                </ul>
-            </div>
-        )
-    }
-}
+    const { isAuthenticated, logout, user, loadUser } = authContext;
+    const { clearTasks } = taskContext;
+
+    useEffect(() => {
+        loadUser();
+        // eslint-disable-next-line
+    }, []);
+
+    const onLogout = () => {
+        logout();
+        clearTasks();
+    };
+
+    const authLinks = (
+        <Fragment>
+            <li>Hello {user && user.name}</li>
+            <li>
+                <a onClick={onLogout} href='#!'>
+                    <i className='fas fa-sign-out-alt' />{' '}
+                    <span className='hide-sm'>Logout</span>
+                </a>
+            </li>
+        </Fragment>
+    );
+
+    const guestLinks = (
+        <Fragment>
+            <li>
+                <Link to='/register'>Register</Link>
+            </li>
+            <li>
+                <Link to='/login'>Login</Link>
+            </li>
+        </Fragment>
+    );
+
+    return (
+        <div className='navbar bg-primary'>
+            <h1>
+                <Link to='/'>
+                    <i className={icon} /> {title}
+                </Link>
+            </h1>
+            <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+        </div>
+    );
+};
+
+Navbar.propTypes = {
+    title: PropTypes.string.isRequired,
+    icon: PropTypes.string
+};
+
+Navbar.defaultProps = {
+    title: 'Daily Task Tracker',
+    icon: 'fas fa-tasks'
+};
 
 export default Navbar;
