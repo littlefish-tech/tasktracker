@@ -20,6 +20,7 @@ const Tasks = () => {
 
     return (
         <Fragment>
+
             {tasks !== null && !loading ? (
                 <TransitionGroup>
                     {filtered !== null
@@ -33,18 +34,21 @@ const Tasks = () => {
                             </CSSTransition>
                         ))
                         : tasks.map(task => (
-                            <CSSTransition
-                                key={task._id}
-                                timeout={500}
-                                classNames='item'
-                            >
-                                <TaskItem task={task} />
-                            </CSSTransition>
+                            <React.StrictMode key={task._id}>
+                                <CSSTransition
+
+                                    timeout={500}
+                                    classNames='item'
+                                >
+                                    <TaskItem task={task} />
+                                </CSSTransition>
+                            </React.StrictMode>
                         ))}
                 </TransitionGroup>
             ) : (
                     <Spinner />
                 )}
+
         </Fragment>
     );
 };

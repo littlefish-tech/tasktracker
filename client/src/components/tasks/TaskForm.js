@@ -13,7 +13,7 @@ const TaskForm = () => {
             setTask({
                 taskname: '',
                 assigner: '',
-                deadline: '',
+                deadline: "",
                 description: '',
                 type: "normal"
             });
@@ -23,15 +23,17 @@ const TaskForm = () => {
     const [task, setTask] = useState({
         taskname: '',
         assigner: '',
-        deadline: '',
+        deadline: "",
         description: '',
         type: "normal"
     });
 
-    const { taskname, assigner, deadline, description, type } = task;
+
+    const { taskname, assigner, description, deadline, type } = task;
 
     const onChange = e =>
         setTask({ ...task, [e.target.name]: e.target.value });
+
 
     const onSubmit = e => {
         e.preventDefault();
@@ -67,8 +69,8 @@ const TaskForm = () => {
                 onChange={onChange}
             />
             <input
-                type='text'
-                placeholder='Deadline'
+                type='date'
+                placeholder='Deadline MM/DD/YYYY'
                 name='deadline'
                 value={deadline}
                 onChange={onChange}
