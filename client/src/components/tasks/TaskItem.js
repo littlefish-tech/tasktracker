@@ -21,7 +21,7 @@ const TaskItem = ({ task }) => {
                     style={{ float: 'right' }}
                     className={
                         'badge ' +
-                        (type === 'Urgent' ? 'badge-success' : 'badge-primary')
+                        (type === 'urgent' ? 'badge-success' : 'badge-primary')
                     }
                 >
                     {type.charAt(0).toUpperCase() + type.slice(1)}
@@ -30,12 +30,17 @@ const TaskItem = ({ task }) => {
             <ul className='list'>
                 {assigner && (
                     <li>
-                        <i className='fas fa-envelope-open' /> {assigner}
+                        <i className='fas fa-user-edit' /> {assigner}
                     </li>
                 )}
                 {deadline && (
                     <li>
-                        <i className='fas fa-phone' /> {deadline}
+                        <i className='fas fa-business-time' /> {deadline}
+                    </li>
+                )}
+                {description && (
+                    <li>
+                        <i className='fas fa-info' /> {description}
                     </li>
                 )}
             </ul>

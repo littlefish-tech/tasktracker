@@ -38,7 +38,7 @@ router.post(
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    const { taskname, assigner, deadline, description } = req.body;
+    const { taskname, assigner, deadline, description, type } = req.body;
 
     try {
         const newTask = new Task({
@@ -46,6 +46,7 @@ router.post(
             assigner,
             deadline,
             description,
+            type,
             user: req.user.id
         });
         const task = await newTask.save();
@@ -53,7 +54,7 @@ router.post(
 
     } catch (err) {
         console.error(err.message);
-        res.status(500).send("Server.error")
+        res.status(500).send("Server Error")
     }
 
 }
@@ -64,7 +65,7 @@ router.post(
 //@access Private
 
 router.put("/:id", auth, async (req, res) => {
-    const { taskname, assigner, deadline, description } = req.body;
+    const { taskname, assigner, deadline, description, type } = req.body;
     //build task object
 
     const taskField = {};
@@ -72,6 +73,7 @@ router.put("/:id", auth, async (req, res) => {
     if (assigner) taskField.assigner = assigner;
     if (deadline) taskField.deadline = deadline;
     if (description) taskField.description = description;
+    if (type) taskField.type = type;
 
     try {
         let task = await Task.findById(req.params.id);

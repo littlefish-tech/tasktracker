@@ -37,7 +37,7 @@ const TaskState = props => {
         } catch (err) {
             dispatch({
                 type: TASK_ERROR,
-                payload: err.response.msg
+                payload: err.response
             });
         }
     };
@@ -60,7 +60,7 @@ const TaskState = props => {
         } catch (err) {
             dispatch({
                 type: TASK_ERROR,
-                payload: err.response.msg
+                payload: err.response
             });
         }
     };
