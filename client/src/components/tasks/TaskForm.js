@@ -68,6 +68,7 @@ const TaskForm = () => {
                 value={assigner}
                 onChange={onChange}
             />
+                Deadline: {" "}
             <input
                 type='date'
                 placeholder='Deadline'

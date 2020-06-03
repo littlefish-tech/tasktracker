@@ -64,7 +64,7 @@ export default (state, action) => {
                 ...state,
                 filtered: state.tasks.filter(task => {
                     const regex = new RegExp(`${action.payload}`, 'gi');
-                    return task.name.match(regex) || task.email.match(regex);
+                    return task.taskname.match(regex) || task.assigner.match(regex);
                 })
             };
         case CLEAR_FILTER:

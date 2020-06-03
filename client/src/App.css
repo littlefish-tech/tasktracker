@@ -2,11 +2,11 @@
 
 /* Global Styles */
 :root {
-  --primary-color: #a46843;
-  --dark-color: #370d00;
-  --light-color: #d5d2c1;
+  --primary-color: #5580a0;
+  --dark-color: #32435f;
+  --light-color: #bdbdbf;
   --danger-color: #fe7773;
-  --success-color: #19b3b1;
+  --success-color: #cc8a4d;
 }
 
 * {
@@ -398,6 +398,9 @@ table th {
 .item-exit-active {
   opacity: 0;
   transition: opacity 1000ms ease-in;
+}
+.deadLine {
+  display: flex;
 }
 
 /* Mobile Styles */
