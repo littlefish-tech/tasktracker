@@ -70,7 +70,7 @@ const TaskForm = () => {
             />
             <input
                 type='date'
-                placeholder='Deadline MM/DD/YYYY'
+                placeholder='Deadline'
                 name='deadline'
                 value={deadline}
                 onChange={onChange}

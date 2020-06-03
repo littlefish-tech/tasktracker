@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import TaskContext from '../../context/task/taskContext';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 const TaskItem = ({ task }) => {
     const taskContext = useContext(TaskContext);
@@ -35,7 +37,7 @@ const TaskItem = ({ task }) => {
                 )}
                 {deadline && (
                     <li>
-                        <i className='fas fa-business-time' /> {deadline}
+                        <i className='fas fa-business-time' /> <Moment format="YYYY/MM/DD">{moment.utc(deadline)}</Moment>
                     </li>
                 )}
                 {description && (
