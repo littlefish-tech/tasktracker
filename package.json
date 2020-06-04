@@ -1,7 +1,7 @@
 {
-  "name": "tasktracker",
+  "name": "todolist",
   "version": "1.0.0",
-  "description": "Task Tracking",
+  "description": "To Do List",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/littlefish-tech/tasktracker.git"
+    "url": "git+https://github.com/littlefish-tech/todolist.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/littlefish-tech/tasktracker/issues"
+    "url": "https://github.com/littlefish-tech/todolist/issues"
   },
-  "homepage": "https://github.com/littlefish-tech/tasktracker#readme",
+  "homepage": "https://github.com/littlefish-tech/todolist#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",
