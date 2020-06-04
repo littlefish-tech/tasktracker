@@ -1,7 +1,7 @@
 {
-  "name": "dailytasktracker",
+  "name": "tasktracker",
   "version": "1.0.0",
-  "description": "Daily Task Tracking",
+  "description": "Task Tracking",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/littlefish-tech/dailytasktracker.git"
+    "url": "git+https://github.com/littlefish-tech/tasktracker.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/littlefish-tech/dailytasktracker/issues"
+    "url": "https://github.com/littlefish-tech/tasktracker/issues"
   },
-  "homepage": "https://github.com/littlefish-tech/dailytasktracker#readme",
+  "homepage": "https://github.com/littlefish-tech/tasktracker#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "config": "^3.3.1",

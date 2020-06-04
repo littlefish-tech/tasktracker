@@ -62,7 +62,7 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-    title: 'Daily Task Tracker',
+    title: 'Task Tracker',
     icon: 'fas fa-tasks'
 };
 

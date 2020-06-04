@@ -34,15 +34,15 @@ const Tasks = () => {
                             </CSSTransition>
                         ))
                         : tasks.map(task => (
-                            <React.StrictMode key={task._id}>
-                                <CSSTransition
+                            // <React.StrictMode >
+                            <CSSTransition key={task._id}
 
-                                    timeout={500}
-                                    classNames='item'
-                                >
-                                    <TaskItem task={task} />
-                                </CSSTransition>
-                            </React.StrictMode>
+                                timeout={500}
+                                classNames='item'
+                            >
+                                <TaskItem task={task} />
+                            </CSSTransition>
+                            // </React.StrictMode>
                         ))}
                 </TransitionGroup>
             ) : (
